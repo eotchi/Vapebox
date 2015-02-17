@@ -5,7 +5,6 @@ class LiquidTest < ActiveSupport::TestCase
   test "A liquid can be saved, if name, base and nicotine are given" do
     liquid = Liquid.new(name: "Strawberry Cheesecake", base:"PG/VG", nicotine:9, notes:'This is not bad at all')
     assert liquid.valid?
-#    assert_equal "The liquid wasn't saved", liquid.errors[:name].first
   end
   
   test "A liquid should always have a name " do
