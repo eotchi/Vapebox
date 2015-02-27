@@ -9,17 +9,23 @@ class LiquidTest < ActiveSupport::TestCase
   
   test "A liquid should always have a name " do
     liquid = Liquid.new(base: "PG", nicotine: 9)
-    assert !liquid.valid?, liquid.errors[:name].first
+    assert !liquid.valid?
+    liquid.save
+    assert_equal ["can't be blank"], liquid.errors[:name]
   end
 
   test "A liquid should always have a defined base type " do
     liquid = Liquid.new(name: "Strawberry Cheescake", nicotine: 9)
-    assert !liquid.valid?, liquid.errors[:base].first
+    assert !liquid.valid?
+    liquid.save
+    assert_equal ["can't be blank"], liquid.errors[:base]
   end
 
   test "A liquid should always have a nicotine amount " do
     liquid = Liquid.new(name: "Strawberry Cheescake", base: "PG")
-    assert !liquid.valid?, liquid.errors[:nicotine].first
+    assert !liquid.valid?
+    liquid.save
+    assert_equal ["can't be blank"], liquid.errors[:nicotine]
   end
 
 end
